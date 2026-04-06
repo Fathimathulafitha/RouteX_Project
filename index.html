@@ -79,7 +79,6 @@
     }
 
     .nav-links a:hover { color: var(--green); }
-
     .nav-links a .fa-chevron-down { font-size: 0.65rem; }
 
     .nav-contact {
@@ -107,6 +106,47 @@
       color: var(--text-gray);
     }
 
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark-green);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      padding: 20px 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .mobile-nav a:hover { color: var(--green); }
+
     /* ─── HERO ─── */
     .hero {
       position: relative;
@@ -126,7 +166,6 @@
         radial-gradient(ellipse at 20% 80%, rgba(0,0,0,0.4) 0%, transparent 50%);
     }
 
-    /* decorative triangles */
     .tri {
       position: absolute;
       width: 0; height: 0;
@@ -138,7 +177,6 @@
     .tri-3 { bottom: 80px; right: 200px; border-width: 0 40px 40px 0; border-color: transparent var(--green) transparent transparent; opacity: 0.25; }
     .tri-4 { top: 40px; left: 60px; border-width: 20px 0 0 20px; border-color: transparent transparent transparent rgba(106,191,46,0.4); }
 
-    /* plane silhouette */
     .plane-wrap {
       position: absolute;
       right: 60px;
@@ -153,7 +191,7 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 680px;
+      max-width: 780px;
       padding: 60px 20px;
     }
 
@@ -162,16 +200,21 @@
       font-size: 3.2rem;
       font-weight: 800;
       color: var(--white);
-      line-height: 1.15;
+      line-height: 1.3;
       margin-bottom: 20px;
+      letter-spacing: 2px;
+      word-spacing: 12px;
     }
 
-    .hero-content h1 span { color: var(--green); }
+    .hero-content h1 span {
+      color: var(--green);
+      letter-spacing: 4px;
+    }
 
     .hero-content p {
       color: rgba(255,255,255,0.75);
       font-size: 0.95rem;
-      max-width: 420px;
+      max-width: 460px;
       margin: 0 auto 30px;
       line-height: 1.7;
     }
@@ -257,7 +300,6 @@
       margin-top: 4px;
     }
 
-    /* image placeholders */
     .img-placeholder {
       border-radius: 12px;
       background: #d0e8c0;
@@ -417,7 +459,6 @@
       line-height: 1.75;
     }
 
-    /* services bg decoration */
     .services-bg-img {
       position: absolute;
       right: 0; top: 0; bottom: 0;
@@ -487,9 +528,7 @@
 
     .footer-col ul { list-style: none; }
 
-    .footer-col ul li {
-      margin-bottom: 10px;
-    }
+    .footer-col ul li { margin-bottom: 10px; }
 
     .footer-col ul li a {
       color: rgba(255,255,255,0.65);
@@ -502,7 +541,6 @@
     }
 
     .footer-col ul li a:hover { color: var(--green); }
-
     .footer-col ul li a i { font-size: 0.7rem; }
 
     .gallery-grid {
@@ -537,11 +575,14 @@
       margin: 0 auto;
       font-size: 0.8rem;
       color: rgba(255,255,255,0.45);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .footer-bottom-links {
       display: flex;
       gap: 24px;
+      flex-wrap: wrap;
     }
 
     .footer-bottom-links a {
@@ -552,17 +593,69 @@
 
     .footer-bottom-links a:hover { color: var(--green); }
 
-    /* ─── responsive ─── */
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 900px) {
-      nav { padding: 14px 24px; }
+      nav { padding: 14px 24px; position: relative; }
       .nav-links { display: none; }
-      .about-section { flex-direction: column; padding: 60px 24px; }
-      .about-images { flex: none; width: 100%; height: 300px; }
-      .services-section { padding: 60px 24px; }
+      .nav-contact { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { min-height: 420px; }
+      .hero-content { padding: 50px 20px; }
+      .hero-content h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        word-spacing: 6px;
+        line-height: 1.35;
+      }
+      .hero-content h1 span { letter-spacing: 2px; }
+      .hero-content p { font-size: 0.88rem; }
+
+      .plane-wrap { display: none; }
+      .tri { display: none; }
+
+      .about-section {
+        flex-direction: column;
+        padding: 50px 24px;
+        gap: 40px;
+      }
+      .about-images {
+        flex: none;
+        width: 100%;
+        height: 280px;
+      }
+      .img-top-left { width: 160px; height: 160px; }
+      .img-top-right { width: 120px; height: 120px; }
+      .img-bottom-right { width: 170px; height: 140px; }
+
+      .about-features { grid-template-columns: 1fr; }
+
+      .services-section { padding: 50px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; padding: 0; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
       footer { padding: 48px 24px 20px; }
-      .hero-content h1 { font-size: 2.2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.7rem;
+        letter-spacing: 0.5px;
+        word-spacing: 4px;
+      }
+      .about-images { height: 260px; }
+      .img-top-left { width: 140px; height: 140px; }
+      .img-top-right { width: 105px; height: 105px; }
+      .img-bottom-right { width: 150px; height: 120px; }
+      .experience-badge { padding: 14px 18px; }
+      .experience-badge .num { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -590,6 +683,17 @@
       (307) 555-0133
     </div>
   </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Story</a>
+    <a href="#">Visa</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -612,35 +716,35 @@
 <section>
   <div class="about-section">
 
-  <!-- Images collage -->
-<div class="about-images">
-  <!-- Top left: woman at desk (visa consultant working) -->
-  <div class="img-placeholder img-top-left" style="width:200px;height:200px; overflow:hidden; padding:0;">
-    <img src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?w=400&h=400&fit=crop&crop=faces" 
-         alt="Visa consultant at desk" 
-         style="width:100%;height:100%;object-fit:cover;">
-  </div>
+    <!-- Images collage -->
+    <div class="about-images">
+      <!-- Top left: visa consultant at desk -->
+      <div class="img-placeholder img-top-left" style="overflow:hidden; padding:0;">
+        <img src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?w=400&h=400&fit=crop&crop=faces"
+             alt="Visa consultant at desk"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
 
-  <!-- Top right: woman with passport -->
-  <div class="img-placeholder img-top-right" style="width:148px;height:148px; background:#e8f5d8; overflow:hidden; padding:0;">
-  <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300&h=300&fit=crop" 
-       alt="Passport and boarding pass" 
-       style="width:100%;height:100%;object-fit:cover;">
-</div>
+      <!-- Top right: passport & boarding pass -->
+      <div class="img-placeholder img-top-right" style="background:#e8f5d8; overflow:hidden; padding:0;">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300&h=300&fit=crop"
+             alt="Passport and boarding pass"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
 
-  <!-- Bottom right: two people at table (consultation meeting) -->
-  <div class="img-placeholder img-bottom-right" style="width:210px;height:175px; background:#d6edbb; overflow:hidden; padding:0;">
-    <img src="https://images.unsplash.com/photo-1560264280-88b68371db39?w=420&h=350&fit=crop" 
-         alt="Two people at consultation table" 
-         style="width:100%;height:100%;object-fit:cover;">
-  </div>
+      <!-- Bottom right: two people at consultation table -->
+      <div class="img-placeholder img-bottom-right" style="background:#d6edbb; overflow:hidden; padding:0;">
+        <img src="https://images.unsplash.com/photo-1560264280-88b68371db39?w=420&h=350&fit=crop"
+             alt="Two people at consultation table"
+             style="width:100%;height:100%;object-fit:cover;">
+      </div>
 
-  <!-- Experience badge -->
-  <div class="experience-badge">
-    <div class="num">10+</div>
-    <div class="label">Years Of<br>Experience</div>
-  </div>
-</div>
+      <!-- Experience badge -->
+      <div class="experience-badge">
+        <div class="num">10+</div>
+        <div class="label">Years Of<br>Experience</div>
+      </div>
+    </div>
 
     <!-- Text -->
     <div class="about-text">
@@ -653,12 +757,11 @@
       <div class="about-features">
         <div class="feature-item">
           <h4><i class="fas fa-check-square"></i> Safety Guides</h4>
-          <p> speaks directly to traveler concerns about security and compliance</p>
+          <p>Travel with peace of mind. We provide up-to-date safety advisories, travel insurance guidance, and country-specific entry requirements to keep you protected at every destination.</p>
         </div>
         <div class="feature-item">
           <h4><i class="fas fa-check-square"></i> Passport Assistance</h4>
-          <p>covers the full passport service lifecycle RouteX offers.</p>
-</p>
+          <p>From fresh applications to renewals and urgent processing, our experts handle all your passport formalities quickly and hassle-free, so you're always ready to go.</p>
         </div>
       </div>
 
@@ -712,7 +815,7 @@
         <div class="logo-icon" style="background:var(--green);"><i class="fas fa-paper-plane"></i></div>
         <span style="color:white;">RouteX</span>
       </a>
-      <h4>RouteX</h4>
+      <h4 style="color:white; margin-top:12px; margin-bottom:10px;">RouteX</h4>
       <p>RouteX is a trusted travel and immigration consultancy dedicated to making your global journey seamless. From visa processing and passport assistance to corporate travel and immigration services, we deliver end-to-end solutions for individuals and businesses across 150+ countries — all at zero service fees.</p>
       <div class="social-links">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -723,75 +826,70 @@
     </div>
 
     <!-- Service Menu -->
-<div class="footer-col">
-  <h4>Service Menu</h4>
-  <ul>
-    <li><a href="#"><i class="fas fa-check"></i> Visa Application & Processing</a></li>
-    <li><a href="#"><i class="fas fa-check"></i> Passport Assistance</a></li>
-    <li><a href="#"><i class="fas fa-check"></i> Immigration Consulting</a></li>
-    <li><a href="#"><i class="fas fa-check"></i> Corporate Travel Management</a></li>
-  </ul>
-</div>
+    <div class="footer-col">
+      <h4>Service Menu</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-check"></i> Visa Application & Processing</a></li>
+        <li><a href="#"><i class="fas fa-check"></i> Passport Assistance</a></li>
+        <li><a href="#"><i class="fas fa-check"></i> Immigration Consulting</a></li>
+        <li><a href="#"><i class="fas fa-check"></i> Corporate Travel Management</a></li>
+      </ul>
+    </div>
 
-<!-- Useful Link -->
-<div class="footer-col">
-  <h4>Useful Links</h4>
-  <ul>
-    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-    <li><a href="#"><i class="fas fa-chevron-right"></i> Countries We Serve</a></li>
-    <li><a href="#"><i class="fas fa-chevron-right"></i> Travel Blog</a></li>
-    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-  </ul>
-</div>
+    <!-- Useful Links -->
+    <div class="footer-col">
+      <h4>Useful Links</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Countries We Serve</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Travel Blog</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+      </ul>
+    </div>
 
     <!-- Gallery -->
-<div class="footer-col">
-  <h4>Gallery</h4>
-  <div class="gallery-grid">
-    <!-- Passport & documents -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=150&h=150&fit=crop" 
-           alt="Passport" style="width:100%;height:100%;object-fit:cover;">
+    <div class="footer-col">
+      <h4>Gallery</h4>
+      <div class="gallery-grid">
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=150&h=150&fit=crop" alt="Passport">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=150&h=150&fit=crop" alt="Airport">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=150&h=150&fit=crop" alt="Visa Consultation">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=150&h=150&fit=crop" alt="Travel Planning">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=150&h=150&fit=crop" alt="Documents">
+        </div>
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=150&h=150&fit=crop" alt="City Destination">
+        </div>
+      </div>
     </div>
-    <!-- Airport terminal -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=150&h=150&fit=crop" 
-           alt="Airport" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <!-- Visa consultation -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=150&h=150&fit=crop" 
-           alt="Visa Consultation" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <!-- World map / travel planning -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=150&h=150&fit=crop" 
-           alt="Travel Planning" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <!-- Immigration paperwork -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=150&h=150&fit=crop" 
-           alt="Documents" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <!-- City skyline / destination -->
-    <div class="gallery-thumb">
-      <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=150&h=150&fit=crop" 
-           alt="City Destination" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-  </div>
-</div>
 
   </div>
 
   <div class="footer-bottom">
-    <span><p>© RouteX 2026 | All Rights Reserved | Designed for seamless visa & immigration services across 150+ countries.</p></span>
+    <span>© RouteX 2026 | All Rights Reserved | Designed for seamless visa & immigration services across 150+ countries.</span>
     <div class="footer-bottom-links">
-      <a href="#">Trams & Condition</a>
+      <a href="#">Terms & Conditions</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Contact Us</a>
     </div>
   </div>
 </footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>
